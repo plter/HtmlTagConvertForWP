@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<s:WindowedApplication title="HTML实体标签转换工具" showStatusBar="false" width="1000" height="600" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+
+
+
+    <s:layout>
+        <s:VerticalLayout/>
+    </s:layout>
+
+    <s:HGroup width="100%" height="100%">
+        <s:VGroup width="50%" height="100%">
+            <s:Label text="原始代码粘贴在此处"/>
+            <s:TextArea width="100%" height="100%" id="taSource"/>
+        </s:VGroup>
+        <s:VGroup width="50%" height="100%">
+            <s:Label text="转换后"/>
+            <s:TextArea width="100%" height="100%" id="taTarget"/>
+        </s:VGroup>
+    </s:HGroup>
+
+    <s:Button width="100%" label="转换" id="btnTranslate" click="btnTranslate_clickHandler(event)"/>
+    <fx:Script><![CDATA[
+        private function btnTranslate_clickHandler(event:MouseEvent):void {
+            var str = taSource.text;
+            str = str.split("<").join("&lt;");
+            str = str.split(">").join("&gt;");
+            taTarget.text = str;
+        }
+        ]]></fx:Script>
+</s:WindowedApplication>
